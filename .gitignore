@@ -1,0 +1,23 @@
+# Root level ignores
+*.log
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+
+# Docker
+.dockerignore
+.env
+docker-compose.override.yml
+
+# OS generated files
+ehthumbs.db
+Icon?
+Thumbs.db

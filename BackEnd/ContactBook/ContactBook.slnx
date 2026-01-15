@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Core/">
+    <Project Path="ContactBook.Application/ContactBook.Application.csproj" Id="10f95f29-a28c-4e74-aab9-5b263b5a89a7" />
+    <Project Path="ContactBook.Domain/ContactBook.Domain.csproj" Id="5c23252d-ddfb-48ce-a111-2a6541f8bd71" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="ContactBook.Infrastructure/ContactBook.Infrastructure.csproj" Id="03bb9804-8d68-4636-b4a4-538fa1251874" />
+    <Project Path="ContactBook.Persistance/ContactBook.Persistance.csproj" Id="968583b7-de1f-40f6-ac93-adea67664846" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="ContactBook.API/ContactBook.API.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="ContactBook.UnitTests/ContactBook.UnitTests.csproj" Id="042c7eb4-4157-457e-9435-cd8890f87cc0" />
+  </Folder>
+</Solution>

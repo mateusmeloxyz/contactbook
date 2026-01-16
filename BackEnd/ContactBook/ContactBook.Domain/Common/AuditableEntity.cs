@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ContactBook.Domain.Common
 {
-    internal class AuditableEntity
+    public class AuditableEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

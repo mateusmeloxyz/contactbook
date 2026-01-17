@@ -10,6 +10,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ContactBook.Application\ContactBook.Application.csproj" />
+    <ProjectReference Include="..\ContactBook.Domain\ContactBook.Domain.csproj" />
+    <ProjectReference Include="..\ContactBook.Persistance\ContactBook.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

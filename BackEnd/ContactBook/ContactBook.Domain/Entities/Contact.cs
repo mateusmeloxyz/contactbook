@@ -12,6 +12,8 @@ namespace ContactBook.Domain.Entities
 {
     public class Contact: AuditableEntity
     {
+        // Parameterless constructor for Entity Framework Core
+        protected Contact() { }
         // Public constructor for domain logic
         public Contact(string name, string email, string phone)
         {
@@ -21,6 +23,7 @@ namespace ContactBook.Domain.Entities
             CreatedAt = DateTime.UtcNow;
             IsActive = true;
         }
+        
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
@@ -28,8 +31,8 @@ namespace ContactBook.Domain.Entities
         public void Update(string name, string email, string telephone)
         {
             Name = name;
-            Email = email;
-            Phone = telephone;
+            Email = email ?? string.Empty;
+            Phone = telephone ?? string.Empty;
             UpdatedAt = DateTime.UtcNow;
         }
         public void Delete()

@@ -1,5 +1,9 @@
+using ContactBook.Application.Queries.GetAllContacts;
+using ContactBook.Domain.Entities;
+using ContactBook.Persistance.Repositories;
+using MediatR;
+
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -8,11 +12,36 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy",
+        builder =>
+        {
+            builder
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
+//builder.Services.AddMediatR(typeof(GetAllContactsQuery).Assembly);
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllContactsQuery).Assembly));
+
+//builder.Services.AddScoped<IAsyncRepository<Contact>>();
+builder.Services.AddScoped<IContactRepository, ContactRepository>();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
+//app.UseHttpsRedirection();
+//app.UseAuthorization();
 app.MapControllers();
 
 app.MapGet("/", () => "Hello World!");

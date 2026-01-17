@@ -17,6 +17,10 @@ namespace ContactBook.Application.Commands.UpdateContact
         public async Task<Guid> Handle(UpdateContactCommand request, CancellationToken cancellationToken)
         {
             Contact contact = await _contactRepository.GetByIdAsync(request.Id);
+            if (contact == null)
+            {
+                throw new KeyNotFoundException($"Contact with ID {request.Id} not found.");
+            }
             contact.Update(request.Name, request.Email!, request.Phone!);
             await _contactRepository.SaveChangesAsync();
 

@@ -11,8 +11,18 @@ onMounted(() => {
 
 <template>
     <div class="card">
-        <div class="font-semibold text-xl mb-4">Recent Sales</div>
-        <DataTable :value="contacts" :rows="5" :paginator="true" responsiveLayout="scroll">
+        <DataTable :value="contacts" :rows="5" :paginator="true" v-model:filters="filters" responsiveLayout="scroll" :loading="loading1" :filters="filters" :globalFilterFields="['name', 'email', 'phone']"">
+            <template #header>
+                <div class="flex justify-between">
+                    <Button type="button" icon="pi pi-plus" label="Add" outlined @click="addContact()" />
+                    <IconField>
+                        <InputIcon>
+                            <i class="pi pi-search" />
+                        </InputIcon>
+                        <!-- <InputText v-model="filters['global'].value" placeholder="Keyword Search" /> -->
+                    </IconField>
+                </div>
+            </template>
             <Column field="name" header="Name" :sortable="true" style="width: 35%"></Column>
             <Column field="email" header="Email" :sortable="true" style="width: 35%">
                 <template #body="slotProps">

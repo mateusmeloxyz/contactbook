@@ -11,7 +11,7 @@ const router = createRouter({
                 {
                     path: '/',
                     name: 'contacts',
-                    component: () => import('@/views/custom/ContactList.vue')
+                    component: () => import('@/views/custom/ContactListTable.vue')
                 },/*
                 {
                     path: '/',

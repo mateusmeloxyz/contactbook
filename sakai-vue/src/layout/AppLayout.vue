@@ -21,7 +21,7 @@ const containerClass = computed(() => {
 <template>
     <div class="layout-wrapper" :class="containerClass">
         <AppTopbar />
-        <AppSidebar />
+        <!-- <AppSidebar /> -->
         <div class="layout-main-container">
             <div class="layout-main">
                 <router-view />

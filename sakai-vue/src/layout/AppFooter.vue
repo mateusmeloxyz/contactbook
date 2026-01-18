@@ -2,7 +2,7 @@
 
 <template>
     <div class="layout-footer">
-        SAKAI by
-        <a href="https://primevue.org" target="_blank" rel="noopener noreferrer" class="text-primary font-bold hover:underline">PrimeVue</a>
+        Contact Book by
+        <a href="https://mateusmelo.com" target="_blank" rel="noopener noreferrer" class="text-primary font-bold hover:underline">Mateus Melo</a>
     </div>
 </template>

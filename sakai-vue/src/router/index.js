@@ -10,6 +10,11 @@ const router = createRouter({
             children: [
                 {
                     path: '/',
+                    name: 'contacts',
+                    component: () => import('@/views/custom/ContactList.vue')
+                },/*
+                {
+                    path: '/',
                     name: 'dashboard',
                     component: () => import('@/views/Dashboard.vue')
                 },
@@ -111,7 +116,7 @@ const router = createRouter({
                     path: '/start/documentation',
                     name: 'documentation',
                     component: () => import('@/views/pages/Documentation.vue')
-                }
+                }*/
             ]
         },
         {

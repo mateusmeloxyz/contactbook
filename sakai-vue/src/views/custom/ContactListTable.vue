@@ -1,17 +1,39 @@
 <script setup>
 import { ContactService } from '@/service/ContactService';
 import { onMounted, ref } from 'vue';
+import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
 
 const contacts = ref(null);
+const filters = ref({});
+const loading = ref(null);
 
 onMounted(() => {
     ContactService.getContactsSmallTest().then((data) => contacts.value = data);
+
+    initFilters();
 });
+
+function initFilters() {
+    filters.value = {
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        name: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+        email: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+        phone: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+    };
+}
 </script>
 
 <template>
     <div class="card">
-        <DataTable :value="contacts" :rows="5" :paginator="true" v-model:filters="filters" responsiveLayout="scroll" :loading="loading1" :filters="filters" :globalFilterFields="['name', 'email', 'phone']"">
+        <DataTable 
+            :value="contacts"
+            :rows="5"
+            :paginator="true"
+            v-model:filters="filters"
+            responsiveLayout="scroll"
+            :loading="loading"
+            :globalFilterFields="['name', 'email', 'phone']"
+        >
             <template #header>
                 <div class="flex justify-between">
                     <Button type="button" icon="pi pi-plus" label="Add" outlined @click="addContact()" />
@@ -19,7 +41,7 @@ onMounted(() => {
                         <InputIcon>
                             <i class="pi pi-search" />
                         </InputIcon>
-                        <!-- <InputText v-model="filters['global'].value" placeholder="Keyword Search" /> -->
+                        <InputText v-if="filters['global']" v-model="filters['global'].value" placeholder="Keyword Search" />
                     </IconField>
                 </div>
             </template>

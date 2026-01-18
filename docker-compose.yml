@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./sakai-vue
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      VITE_API_BASE_URL: http://localhost:80
+    networks:
+      - main-network
+
+  server:
+    build:
+      context: ./BackEnd/ContactBook
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - main-network
+      
+networks:
+  main-network:

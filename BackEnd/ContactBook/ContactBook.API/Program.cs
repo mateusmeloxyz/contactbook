@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("MyCorsPolicy",
+    options.AddPolicy("AllowAll",
         builder =>
         {
             builder
@@ -31,6 +31,8 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAl
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
 
 var app = builder.Build();
+
+app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
 {

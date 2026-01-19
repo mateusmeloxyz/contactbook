@@ -22,8 +22,8 @@
 **Fields:**
 - 'First Name' (required, 2-100 chars)
 - 'Last Name' (optional, 2-100 chars) (tentative)
-- 'Email'  (optional, unique, valid format "email@domain.com")
-- 'Phone' (optional, unique, stored as numbers only (mask brazilian format in the front-end))
+- 'Email'  (required, unique, valid format "email@domain.com")
+- 'Phone' (required, unique, stored as numbers only (mask brazilian format in the front-end))
 - 'CreatedAt' (auto-generated)
 - 'UpdatedAt (auto-updated on changes)
 - 'IsActive' (flag for soft delete, defaults to true)

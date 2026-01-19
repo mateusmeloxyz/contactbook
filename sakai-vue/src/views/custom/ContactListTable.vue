@@ -239,6 +239,7 @@ function initFilters() {
             :value="contacts"
             :rows="5"
             :paginator="true"
+            dataKey="id"
             v-model:filters="filters"
             responsiveLayout="scroll"
             :loading="loading"
@@ -272,10 +273,10 @@ function initFilters() {
                 </template>
             </Column>
             <Column style="width: 15%" header="Options">
-                <template #body>
+                <template #body="slotProps">
                     <div class="flex items-center gap-2">
-                        <Button icon="pi pi-pencil" type="button" class="p-button-text" @click="editContact(slotProps.data)" v-tooltip="'Edit Contact'"></Button>
-                        <Button icon="pi pi-trash" type="button" class="p-button-text" @click="confirmDelete(slotProps.data.id)" v-tooltip="'Delete Contact'"></Button>
+                        <Button icon="pi pi-pencil" type="button" class="p-button-text" @click="editContact(slotProps?.data)" v-tooltip="'Edit Contact'"></Button>
+                        <Button icon="pi pi-trash" type="button" class="p-button-text" @click="confirmDelete(slotProps?.data.id)" v-tooltip="'Delete Contact'"></Button>
                     </div>
                 </template>
             </Column>
@@ -323,18 +324,6 @@ function initFilters() {
                 v-model="contactForm.phone" 
                 mask="(99) 99999-9999" 
                 :class="{ 'p-invalid': !contactForm.phone && displayDialog }"
-            />
-        </div>
-        
-        <div class="field mb-4" v-if="isEditMode">
-            <label for="isActive" class="font-bold block mb-2">Status</label>
-            <ToggleButton 
-                v-model="contactForm.isActive" 
-                onLabel="Active" 
-                offLabel="Inactive"
-                onIcon="pi pi-check" 
-                offIcon="pi pi-times"
-                class="w-full"
             />
         </div>
         

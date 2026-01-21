@@ -22,6 +22,7 @@ namespace ContactBook.UnitTests.Core.Domain.Entities
             Assert.NotNull(contact.Phone);
             Assert.NotEmpty(contact.Phone);
         }
+        [Fact]
         public void TestIfUpdateContactWorks()
         {
             Contact contact = new("Louis Armstrong", "louis@gmail.com", "81998765432");
